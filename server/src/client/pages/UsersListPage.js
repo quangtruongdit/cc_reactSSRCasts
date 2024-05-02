@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchUsers } from '../actions';
-import { Helmet } from 'react-helmet';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchUsers } from "../actions";
+import { Helmet } from "react-helmet";
 
 class UsersList extends Component {
   componentDidMount() {
@@ -9,7 +9,7 @@ class UsersList extends Component {
   }
 
   renderUsers() {
-    return this.props.users.map(user => {
+    return this.props.users.map((user) => {
       return <li key={user.id}>{user.name}</li>;
     });
   }
@@ -34,6 +34,8 @@ class UsersList extends Component {
   }
 }
 
+// If the users property in the Redux state is updated, and if your component is properly connected to Redux using mapStateToProps,
+// then any changes to the users data in the Redux store will trigger a re-render of your component.
 function mapStateToProps(state) {
   return { users: state.users };
 }
@@ -44,5 +46,5 @@ function loadData(store) {
 
 export default {
   loadData,
-  component: connect(mapStateToProps, { fetchUsers })(UsersList)
+  component: connect(mapStateToProps, { fetchUsers })(UsersList),
 };
